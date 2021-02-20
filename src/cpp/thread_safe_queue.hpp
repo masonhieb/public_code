@@ -36,6 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include<queue>
 #include<condition_variable>
 
+// A thread safe queue that blocks and returns a value on "pop()"
 template <typename T>
 class thread_safe_queue {
 public:
