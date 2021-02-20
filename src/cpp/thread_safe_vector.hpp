@@ -32,8 +32,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 #pragma once
-#include<iterator>
-#include <cstddef>
 #include<vector>
 #include<mutex>
 #include<condition_variable>
