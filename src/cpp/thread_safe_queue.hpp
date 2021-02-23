@@ -44,6 +44,10 @@ public:
 		std::lock_guard<std::mutex> lk(m_);
 		return q_.empty();
 	}
+	void wait_for_not_empty() {
+		std::unique_lock<std::mutex> lk(m_);
+		cv_.wait(lk, [this]() {return !q_.empty(); });
+	}
 	T pop() {
 		std::unique_lock<std::mutex> lk(m_);
 		cv_.wait(lk, [this]() {return !q_.empty(); });
@@ -61,6 +65,10 @@ public:
 		std::lock_guard<std::mutex> lk(m_);
 		q_.push(val);
 		notify();
+	}
+	std::size_t size() {
+		std::lock_guard<std::mutex> lk(m_);
+		return q_.size();
 	}
 	void notify() {
 		cv_.notify_all();
