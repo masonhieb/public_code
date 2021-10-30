@@ -98,8 +98,8 @@ void post_request_https(
 
     ssl::context ctx(ssl::context::tlsv12_client);
 
-    // This only works on Windows if using masonhieb/asio - set_default_verify_paths
-    // modified to include custom Windows code to load Windows root certificates
+    // This only works on Windows if using my (Mason Hieb) fork of asio, where set_default_verify_paths
+    // is modified to include custom Windows code to load Windows root certificates
     ctx.set_default_verify_paths();
     ctx.set_verify_mode(ssl::verify_peer);
 
